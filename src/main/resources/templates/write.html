@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>방명록 작성</title>
+    <style>
+      .class-caption {
+        width: 100px;
+      }
+
+      .class-content {
+        width: 500px;
+      }
+    </style>
+    <script th:inline="javascript">
+      function backToList() {
+        location.href = /*[[@{/book/list}]]*/ "/book/list";
+      }
+    </script>
+  </head>
+  <body>
+    <h1 style="text-align: center">방명록 작성</h1>
+
+    <form method="post" th:action="@{/book/post}">
+      <table border="0" align="center">
+        <tbody>
+          <tr>
+            <td align="right" class="class-caption">작성자:</td>
+            <td>
+              <input
+                type="text"
+                name="writer"
+                maxlength="100"
+                class="class-content"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top" class="class-caption">
+              <br />글 내용:
+            </td>
+            <td>
+              <textarea
+                name="post"
+                rows="10"
+                maxlength="2000"
+                class="class-content"
+                required
+              ></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <input type="submit" value="저장" />
+              <input type="button" value="목록보기" onclick="backToList()" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </body>
+</html>
